@@ -1,12 +1,56 @@
 # LLM_History_Chatbot_Colonel-Miles-Quaritch_style
 This is a comprehensive AI chatbot project has built to help people learn more about history with Colonel Miles Quaritch's tongue (a Avatar character).
 ![o7tccnxp6kfa1](https://github.com/user-attachments/assets/884c2142-21e7-430d-82f3-7ef97efa425c)
+
 Model Architecture:
-- To Fine-Tune in Colonel Miles Quaritch style I have created a dataset with 50 pairs Q&A old history in his voice. Then put it straight into the model for simplicity. (Before I've tried to add dataset from google drive and created a token to access it).
-- Database: 
+1. Database: TinyLlama-1.1B-Chat-v1.0: 1.1 billion parameters.
+2. LoRA Fine-Tuning:
+    - Applied LoRA to reduce the number of trainable parameters, making fine-tuning efficient.
+    - Fine-tuned on a custom dataset of 50 historical question-answer pairs styled like Colonel Quaritch.
+3. RAG:
+    - Added RAG: Uses sentence-transformers/all-MiniLM-L6-v2 to generates 384-dimensional embeddings for text.
+    - FAISS Index: A faiss.IndexFlatL2 index stores answer embeddings for efficient similarity search.
+    - Retrieval Process: For a given question, the model encodes it into an embedding, searches the FAISS index for the closest answer(s), and uses the retrieved         answer as context for generation.
+    - Purpose: Enhances the model’s ability to provide accurate answers by retrieving relevant pre-stored responses, especially for questions in the training             dataset.
+4. Setup Training:
+    - Optimizer: Lion.
+    - Dataset: A custom History_Dataset with 50+ historical question-answer pairs.
+    - Data Loading: Uses PyTorch’s DataLoader with a 90-10 train-test split, batch size of 8 (train) and 32 (test), and a block size of 128 tokens.
+    - Loss Function: Cross-entropy loss for next-token prediction, computed on shifted input tokens with attention masking.
+    - Training Loop: Runs for up to 10 epochs or 1000 steps, with loss logging every 5 steps and periodic evaluation via a test question.
+5. Evaluation and Style Scoring:
+    - Added LLMJudgeEvaluator:
+        . Using the same TinyLlama model with a system prompt to evaluate text.
+        . Outputs a JSON object with a score (0-10, normalized to 0-1) and feedback.
+        . Using Python’s multiprocessing.Pool for efficiency.
+    - Visualization: Generates histograms comparing scores for base questions, generated answers, and style-aligned answers using seaborn and matplotlib.
+6. Generation:
+    - Chat Function: Combines retrieval and generation:
+        . Checks if the question matches a dataset question (exact match, case-insensitive).
+        . If no match, retrieves the most similar answer using FAISS and uses it as context.
+        . Generates a response using the fine-tuned model.
+    - Using a custom StopOnTokenCriteria to stop generation at specific tokens (e.g., } for JSON responses).
+   
+Limitation:
+    - Small Dataset -> Overfitting occured.
+    - Moodel relies heavily on retrieval for accuracy. If the FAISS index lacks relevant answers, performance may degrade.
+    - Style bias: The aggressive, militaristic style.
+    - Limited of computation.
+     
+Performance:
+    - Model trains for up to 10 epochs or 1000 steps, with loss logged every 5 steps. 
+    - Chat function generates concise, style-aligned answers (up to 25 tokens) with low temperature (0.3) for consistency.
+    - Retrieval: FAISS provides fast similarity search, with embeddings generated in ~O(1) time.
+    - Style Scoring: LLMJudgeEvaluator assigns scores (0-1) based on style fidelity, with parallel processing for efficiency.
+
+Features wished to put in:
+    - Reinforcement: will level up model with dynamic adapting model's behavior, fine-tuning style, reduce ovefitting, and more accuracy.
+    - However, because of low computational possessing, I will build adaptive RLHF for this model as an optional addition in a seperated file.
+
+Experiencing: 48 days with everage 4 hours per day to go step by step from basic MIT framework to more complicated, tons of changing and adjustment, stressing with debugging > learning errors > researching best fit > adjusting > evaluate > practicing balance mood and energy > repeating.
 
 Preferences:
     © MIT Introduction to Deep Learning
     http://introtodeeplearning.com
-https://huggingface.co/spaces/hummingbirdhumbles/DialoGPTChatbot
-[Coursera/Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning)
+    https://huggingface.co/spaces/hummingbirdhumbles/DialoGPTChatbot
+    [Coursera/Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning)
