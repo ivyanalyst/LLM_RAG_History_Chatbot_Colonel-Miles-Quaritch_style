@@ -2,6 +2,7 @@
 This is a comprehensive AI chatbot project has built to help people learn more about history with Colonel Miles Quaritch's tongue (a Avatar character).
 ![o7tccnxp6kfa1](https://github.com/user-attachments/assets/884c2142-21e7-430d-82f3-7ef97efa425c)
 
+This project was developed entirely in Jupyter Notebook using Google Colab.
 Model Architecture:
 1. Database: TinyLlama-1.1B-Chat-v1.0: 1.1 billion parameters.
 2. LoRA Fine-Tuning:
