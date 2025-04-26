@@ -48,6 +48,7 @@ Performance:
 Features I wish to include:
     Reinforcement: The model will level up by dynamically adapting its behavior, fine-tuning its style, reducing overfitting, and improving accuracy.
     However, due to limited computational resources, I will build an adaptive RLHF (Reinforcement Learning with Human Feedback) module for this model as an optional addition in a separate file.
+    Debiasing will improve the fairness and accuracy of the model's output, with bigger data.  
 
 Preferences:
     © MIT Introduction to Deep Learning
