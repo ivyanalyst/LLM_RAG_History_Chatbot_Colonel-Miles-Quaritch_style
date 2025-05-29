@@ -1,5 +1,5 @@
 # LLM_History_Chatbot_Colonel-Miles-Quaritch_style
-This is a comprehensive AI chatbot project has built to help people learn more about history with Colonel Miles Quaritch's tongue (a Avatar character).
+This is a LLM chatbot (agent) project has built to help people learn more about history with Colonel Miles Quaritch's tongue (a Avatar character).
 ![o7tccnxp6kfa1](https://github.com/user-attachments/assets/884c2142-21e7-430d-82f3-7ef97efa425c)
 
 This project was developed entirely in Jupyter Notebook using Google Colab.
