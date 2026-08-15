@@ -1,21 +1,4 @@
-<p align="center">
-  <!-- Keep the banner image line from your current README here (drag-and-drop image markdown) -->
-  <img src="./assets/banner.jpg" alt="Colonel Miles Quaritch History Chatbot" width="700">
-</p>
-
-<h1 align="center">History Chatbot: Colonel Miles Quaritch Style</h1>
-
-<p align="center">
-  A fine-tuned, retrieval-augmented history chatbot that answers trivia questions in the voice of Colonel Miles Quaritch — Avatar's gruff, militaristic colonel.
-</p>
-
-<p align="center">
-  <a href="https://colab.research.google.com/github/ivyanalyst/LLM_RAG_History_Chatbot_Colonel-Miles-Quaritch_style/blob/main/Quaritch_Finetuning_Chatbot.ipynb">
-    <img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg">
-  </a>
-  <img alt="Python" src="https://img.shields.io/badge/python-3.10%2B-blue">
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-green">
-</p>
+![o7tccnxp6kfa1](https://github.com/user-attachments/assets/884c2142-21e7-430d-82f3-7ef97efa425c)
 
 ---
 
