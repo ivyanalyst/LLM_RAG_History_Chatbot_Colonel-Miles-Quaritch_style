@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.env
+history_finetuned_model/
+score_distribution.png
+.ipynb_checkpoints/
